@@ -1,3 +1,5 @@
+const model = require('../models/friends.model')
+
 function postFriend(req, res) {
     if (!req.body.name) {
         return res.status(400).json({
@@ -6,16 +8,16 @@ function postFriend(req, res) {
     }
     const newFriend = {
         name: req.body.name,
-        id: friends.length
+        id: model.length
     }
 
-    friends.push(newFriend)
+    model.push(newFriend)
     res.json(newFriend)
 }
 
 function getFriend(req, res) {
     const id = Number(req.params.id);
-    const friend = friends[id];
+    const friend = model[id];
     if (!friend) {
         return res.status(404).json({
             error: "Friend does not exist"
@@ -25,7 +27,7 @@ function getFriend(req, res) {
 }
 
 function getFriends(req, res) {
-    res.json(friends)
+    res.json(model)
 }
 
 module.exports = {
