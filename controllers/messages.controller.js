@@ -1,9 +1,9 @@
 const path = require('path');
 
 function getMessages(req, res) {
-    const filePath = path.join(__dirname, '..', 'public', 'images', '424285.jpg')
-    res.sendFile(filePath);
-    // res.send('Mesaje !')
+    res.render('messages', {
+        car: "Porsche GT3 RS 5.0"
+    })
 }
 
 function postMessage(req, res) {
